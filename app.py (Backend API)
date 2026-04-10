@@ -1,0 +1,58 @@
+# Import required libraries
+from flask import Flask, request, jsonify
+from sklearn.linear_model import LogisticRegression
+import numpy as np
+
+# Create Flask app
+app = Flask(__name__)
+
+# ================= TRAIN SIMPLE MODEL =================
+# Features: [weather, traffic, supplier]
+# Encoding:
+# Weather: Clear=0, Rain=1, Storm=2
+# Traffic: Low=0, Medium=1, High=2
+
+X = np.array([
+    [0,0,5],
+    [1,2,2],
+    [2,2,1],
+    [0,1,4],
+    [1,1,3]
+])
+
+# Output: 0=Low, 1=Medium, 2=High delay
+y = np.array([0,2,2,1,1])
+
+model = LogisticRegression()
+model.fit(X, y)
+
+# ================= API ROUTE =================
+@app.route('/predict', methods=['POST'])
+def predict():
+
+    data = request.json
+
+    # Convert input to numbers
+    weather_map = {"Clear":0, "Rain":1, "Storm":2}
+    traffic_map = {"Low":0, "Medium":1, "High":2}
+
+    weather = weather_map.get(data['weather'],0)
+    traffic = traffic_map.get(data['traffic'],0)
+    supplier = int(data['supplier'])
+
+    # Prediction
+    prediction = model.predict([[weather, traffic, supplier]])[0]
+
+    # Convert output to text
+    if prediction == 2:
+        result = "⚠️ High Delay Risk"
+    elif prediction == 1:
+        result = "⏳ Medium Delay Risk"
+    else:
+        result = "✅ Low Delay Risk"
+
+    return jsonify({"result": result})
+
+# Run server
+if __name__ == "__main__":
+    app.run(debug=True)
