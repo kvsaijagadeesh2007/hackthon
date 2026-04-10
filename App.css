@@ -1,0 +1,134 @@
+/* ================= BODY STYLING ================= */
+/* Applies to whole page */
+body{
+  font-family: Arial; 
+  /* Sets font style */
+
+  background: linear-gradient(120deg,#4facfe,#00f2fe);
+  /* Gradient background (blue color mix) */
+
+  margin:0;
+  /* Removes default browser margin */
+}
+
+/* ================= MAIN CONTAINER ================= */
+.container{
+  text-align:center;
+  /* Centers all text */
+
+  padding:30px;
+  /* Space inside container */
+}
+
+/* ================= TITLE ================= */
+.title{
+  color:white;
+  /* White color text */
+
+  margin-bottom:30px;
+  /* Space below title */
+}
+
+/* ================= DASHBOARD ================= */
+.dashboard{
+  display:flex;
+  /* Makes items in row */
+
+  justify-content:center;
+  /* Center horizontally */
+
+  gap:20px;
+  /* Space between cards */
+
+  margin-bottom:30px;
+
+  flex-wrap:wrap;
+  /* Moves to next line in small screens */
+}
+
+/* ================= CARD ================= */
+.card{
+  background:white;
+  /* Card background */
+
+  padding:20px;
+
+  border-radius:12px;
+  /* Rounded corners */
+
+  width:150px;
+
+  box-shadow:0px 4px 12px rgba(0,0,0,0.2);
+  /* Shadow for 3D effect */
+}
+
+/* ================= FORM ================= */
+.form{
+  background:white;
+
+  padding:30px;
+
+  border-radius:12px;
+
+  width:300px;
+
+  margin:auto;
+  /* Center form */
+
+  display:flex;
+  flex-direction:column;
+  /* Items in column */
+
+  gap:15px;
+}
+
+/* ================= INPUTS ================= */
+select,input{
+  padding:10px;
+
+  border-radius:8px;
+
+  border:1px solid gray;
+}
+
+/* ================= BUTTON ================= */
+button{
+  padding:12px;
+
+  border:none;
+
+  border-radius:8px;
+
+  background:#4facfe;
+  /* Blue color */
+
+  color:white;
+
+  font-size:16px;
+
+  cursor:pointer;
+  /* Pointer on hover */
+}
+
+/* Hover effect */
+button:hover{
+  background:#0077ff;
+}
+
+/* ================= RESULT ================= */
+.result{
+  margin-top:30px;
+
+  background:white;
+
+  padding:20px;
+
+  border-radius:10px;
+
+  width:300px;
+
+  margin-left:auto;
+  margin-right:auto;
+
+  font-weight:bold;
+}
